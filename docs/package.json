@@ -1,0 +1,9 @@
+{
+  "name": "visallo-docs",
+  "dependencies": {
+    "gitbook-cli": "2.3.0"
+  },
+  "devDependencies": {
+    "broken-link-checker": "^0.7.4"
+  }
+}

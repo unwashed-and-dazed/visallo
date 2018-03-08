@@ -1,0 +1,4 @@
+org.visallo.graphCheck.rules.HasConceptTypeGraphCheckRule
+org.visallo.graphCheck.rules.HasRequiredMetadataGraphCheckRule
+org.visallo.graphCheck.rules.HighlyConnectedGraphCheckRule
+org.visallo.graphCheck.rules.SystemVisibilityGraphCheckRule

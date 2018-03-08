@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.visallo</groupId>
+        <artifactId>visallo-web-plugin-base</artifactId>
+        <version>4.1-SNAPSHOT</version>
+        <relativePath>../../../web-plugin-base</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <parquet.version>1.7.0</parquet.version>
+    </properties>
+
+    <artifactId>visallo-web-structured-ingest-parquet</artifactId>
+    <name>Visallo: Web: Structured Ingest: Parquet</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.visallo</groupId>
+            <artifactId>visallo-web-structured-ingest-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jodd</groupId>
+            <artifactId>jodd-core</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>${tika.version}</version>
+        </dependency>
+
+        <!-- for parquet -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.parquet</groupId>
+            <artifactId>parquet-hadoop</artifactId>
+            <version>${parquet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.parquet</groupId>
+            <artifactId>parquet-tools</artifactId>
+            <version>${parquet.version}</version>
+        </dependency>
+
+        <!-- Test Dependencies -->
+        <dependency>
+            <groupId>org.vertexium</groupId>
+            <artifactId>vertexium-inmemory</artifactId>
+            <version>${vertexium.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${plugin.maven.shade.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.apache.parquet:parquet-tools</include>
+                                    <include>org.xerial.snappy:snappy-java</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>org.visallo:visallo-web-structured-ingest-core</exclude>
+                                    <exclude>org.apache.tika:tika-parsers</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-client</exclude>
+                                    <exclude>org.visallo:visallo-web-structured-ingest-core</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.xerial.snappy</pattern>
+                                    <shadedPattern>org.apache.parquet.shaded.org.xerial.snappy</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.common</pattern>
+                                    <shadedPattern>org.apache.parquet.shaded.com.google.common</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.commons</pattern>
+                                    <shadedPattern>org.apache.parquet.shaded.org.apache.commons</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/maven/**</exclude>
+                                        <exclude>META-INF/*</exclude>
+                                        <exclude>javax/annotation/**</exclude>
+                                        <exclude>shaded/**</exclude>
+                                        <exclude>parquet/**</exclude>
+                                        <exclude>parquet.thrift</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

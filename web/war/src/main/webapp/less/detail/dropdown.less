@@ -1,0 +1,192 @@
+.form {
+
+  .dropdown-menu li:hover .visibility {
+    color: white;
+  }
+
+  .buttons {
+    clear: both;
+    text-align: right;
+
+    .btn-danger { float: left; }
+
+    .badge.loading {
+      float: none;
+      position: relative;
+      top: 1ex;
+    }
+  }
+
+  .previous-values-container {
+    position: relative;
+
+    .dropdown-menu {
+      width: 100%;
+      left: 0;
+      top: 2em;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .previous-values {
+    margin-bottom: 0.5em;
+    border: 1px solid @blue-color;
+    border-radius: 4px;
+    overflow: hidden;
+
+    button {
+      border: 0;
+      position: relative;
+      background: inherit;
+      width: 50%;
+      padding: 0.25em 0;
+      margin: 0;
+      float: left;
+      color: @blue-color;
+      .box-sizing(border-box);
+
+      &:first-child {
+        border-right: 1px solid @blue-color;
+      }
+
+      &.active {
+        background: @blue-color;
+        color: white;
+      }
+
+      small {
+        position: absolute;
+        margin-left: 5px;
+        margin-top: 0px;
+      }
+    }
+  }
+
+  .vertex-selection {
+    position: relative;
+    .preview {
+      @size: 1.3em;
+      width: @size; 
+      height: @size; 
+      top: 50%;
+      margin-top: @size / -2;
+      background-size: contain; 
+      position: absolute;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      left: 1ex;
+      background-position: center;
+
+      &.icon-unknown {
+        background-image: url(../img/glyphicons/glyphicons_194_circle_question_mark@2x.png);
+      }
+    }
+    input {
+      padding-left: 2.2em;
+      padding-right: 6ex;
+    }
+    .badge {
+      position: absolute;
+      right: 1ex;
+      top: 1ex;
+
+      &.loading {
+        left: auto;
+        right: 5px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+    }
+  }
+
+  .help {
+    color: #999;
+    margin-bottom: 0.5em;
+  }
+
+  .typeahead {
+    width: 100%;
+
+    .concept-type { 
+      color: #999;
+      font-size: 80%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .existing {
+      white-space: normal;
+      min-height: 30px;
+
+      .property {
+        color: #555;
+        font-size: 80%;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        strong {
+          margin-right: 4px;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .active .concept-type, .active .property, .active .property .value {
+      color: white;
+    }
+
+    .has_preview {
+      position: relative; 
+      padding-left: 25px;
+    }
+    .preview {
+      position: absolute;
+      width: 39px;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: auto 30px;
+      margin-left: -20px;
+      top: 0px;
+      height: 100%;
+      max-height: 3em;
+      background-position: center;
+      left: 0;
+      margin-top: -3px;
+      padding-bottom: 6px;
+    }
+  }
+
+  .visibility input {
+    &.invalid {
+      color: #b94a48;
+      border-color: #ee5f5b;
+      &:focus {
+        border-color: darken(#ee5f5b, 10%);
+        @shadow: 0 0 6px lighten(#ee5f5b, 20%);
+        .box-shadow(@shadow);
+      }
+    }
+  }
+  
+  .justification {
+    clear: both;
+    .viewing .text {
+      margin-top: 0.25em;
+    }
+  }
+}
+
+input {
+  width: 100%;
+  .box-sizing(border-box);
+}
+input[type=checkbox] {
+  width: auto;
+}
+
+select {
+  width: 100%;
+  font-size: 90%;
+}

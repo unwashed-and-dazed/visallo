@@ -1,0 +1,54 @@
+button.remove-icon {
+    font-size: 0;
+    width: 20px;
+    height: 20px;
+    color: #999;
+    line-height: 1.4em;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0.4;
+    background-color: transparent;
+    background-image: url(../img/glyphicons/glyphicons_192_circle_remove.png);
+    background-repeat: no-repeat;
+    background-size: 13px;
+    background-position: center;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+button.icon-with-description {
+    position: relative;
+    padding: 0.5em 0.5em 0.5em 76px;
+    text-align: left;
+    font-weight: bold;
+    height: auto;
+    white-space: normal;
+    background: linear-gradient(to bottom, #fff, #e6e6e6);
+
+    &:hover, &:active {
+        background: #eee;
+    }
+
+    .icon {
+        width: 55px;
+        height: 100%;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        left: 10px;
+        top: 0;
+        opacity: 0.9;
+    }
+    .description {
+        font-size: 80%;
+        font-weight: normal;
+        font-style: italic;
+        white-space: normal;
+        line-height: 1.2em;
+        opacity: 0.8;
+    }
+}

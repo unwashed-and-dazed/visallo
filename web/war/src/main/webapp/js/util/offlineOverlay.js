@@ -1,0 +1,63 @@
+define([
+    'flight/lib/component',
+    './offlineOverlayTpl.hbs',
+    'util/formatters'
+], function(
+    defineComponent,
+    template,
+    F) {
+    'use strict';
+
+    return defineComponent(Overlay);
+
+    function Overlay() {
+
+        this.after('teardown', function() {
+            this.overlay.remove();
+        });
+
+        this.after('initialize', function() {
+            require(['util/sessionExpirationOverlay'], SessionOverlay => {
+                // Offline overrides session timeout overlay
+                $(document).teardownComponent(SessionOverlay);
+            });
+
+            var self = this;
+            $(function() {
+                self.overlay = $(template())
+                    .appendTo(document.body);
+
+                self.$lastCheck = self.overlay.find('.last-checked');
+                setInterval(self.updateLastCheck.bind(self), 30000)
+                self.poll(1);
+                self.updateLastCheck();
+
+            });
+        });
+
+        this.updateLastCheck = function() {
+            if (this.lastCheck) {
+                this.$lastCheck.text(
+                    i18n('visallo.offline_overlay.last_check', F.date.relativeToNow(this.lastCheck))
+                ).show();
+            } else {
+                this.$lastCheck.hide();
+            }
+        };
+
+        this.poll = function(checkNumber) {
+            var self = this;
+
+            this.lastCheck = F.date.utc(new Date()).getTime();
+            $.ajax({ url: 'ping.html', cache: false })
+                .done(function() {
+                    window.location.reload();
+                })
+                .fail(function() {
+                    var waitTimeSeconds = Math.min(120, Math.pow(2, checkNumber) - 1);
+                    setTimeout(self.poll.bind(self, checkNumber + 0.5), waitTimeSeconds * 1000);
+                });
+        }
+
+    }
+});

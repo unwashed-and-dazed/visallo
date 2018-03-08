@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="32px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>selection</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10.5,4 L12.5,4" id="Line" stroke="#000000" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M15.5,4 L17.5,4" id="Line-Copy-3" stroke="#000000" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M10.5,22 L12.5,22" id="Line" stroke="#000000" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M15.5,22 L17.5,22" id="Line-Copy-3" stroke="#000000" stroke-width="2" stroke-linecap="square"></path>
+        <rect id="Rectangle" fill="#000000" x="20" y="1" width="6" height="6"></rect>
+        <rect id="Rectangle-Copy" fill="#000000" x="2" y="1" width="6" height="6"></rect>
+        <rect id="Rectangle-Copy" fill="#000000" x="2" y="19" width="6" height="6"></rect>
+        <path d="M22,10.5 L24,10.5" id="Line" stroke="#000000" stroke-width="2" stroke-linecap="square" transform="translate(23.000000, 10.500000) rotate(90.000000) translate(-23.000000, -10.500000) "></path>
+        <path d="M4,10.5 L6,10.5" id="Line-Copy-4" stroke="#000000" stroke-width="2" stroke-linecap="square" transform="translate(5.000000, 10.500000) rotate(90.000000) translate(-5.000000, -10.500000) "></path>
+        <path d="M22,15.5 L24,15.5" id="Line-Copy-3" stroke="#000000" stroke-width="2" stroke-linecap="square" transform="translate(23.000000, 15.500000) rotate(90.000000) translate(-23.000000, -15.500000) "></path>
+        <path d="M4,15.5 L6,15.5" id="Line-Copy-5" stroke="#000000" stroke-width="2" stroke-linecap="square" transform="translate(5.000000, 15.500000) rotate(90.000000) translate(-5.000000, -15.500000) "></path>
+        <polygon id="Triangle" stroke="#000000" fill="#000000" transform="translate(22.535318, 23.065633) rotate(-35.000000) translate(-22.535318, -23.065633) " points="22.5353177 18.0186789 26.9360859 28.1125875 22.5353177 25.9691202 18.1345495 28.1125875"></polygon>
+    </g>
+</svg>

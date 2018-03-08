@@ -1,0 +1,133 @@
+
+.twizzle {
+  &:hover:before {
+    color: darken(@pane-background, 30%);
+  }
+  &:before {
+    content: '▶';          
+    font-style: normal;
+    position: absolute;
+    left: 1.5ex;
+    font-size: 50%;
+    color: darken(@pane-background, 15%);
+    .transition-transform(ease-in-out);
+    .transform-origin(~"40% 48%");
+  }
+}
+
+.twizzle-expand {
+  &:before {
+    .rotate(90deg);
+  }
+}
+
+.collapsible {
+  @color: darken(@pane-background, 30%);
+  margin-top: 1px;
+
+  & > h1, .collapsible-header {
+    display: flex;
+    .badge {      
+      position: absolute;
+      right: 1ex;
+      left: auto;
+      top: 0.4ex;
+
+      &.loading {
+        left: auto;
+        right: 10px;
+        top: 2px;
+      }
+      &:not(.loading) {
+        background: inherit;
+        color: @color;
+        text-shadow: 0 1px 0 white;
+        line-height: 2.8ex;
+      }
+    }
+  }
+
+  &.expanded {
+    & > h1, .collapsible-header {
+      .twizzle-expand;
+    }
+    & > div, .collapsible-section {
+      display: block;
+    }
+
+    .collapsible {
+      & > h1, .collapsible-header {
+        &:before {
+          .rotate(0);
+        }
+      }
+      &.expanded {
+        & > h1, .collapsible-header {
+          .twizzle-expand;
+        }
+      }
+    }
+  }
+  
+  &.loading {      
+    strong {
+      padding-right: 1em;
+    }
+  }
+  
+  &.has-badge-number {
+    strong {
+      padding-right: 2em;
+    }
+  }
+
+  & > div, .collapsible-section {
+    display: none;
+  }
+
+  & > h1, .collapsible-header {
+    font-size: 100%;
+    padding: 0.25em 1em;
+    margin: 0;
+    background: darken(@pane-background, 3%);
+    cursor: pointer;    
+    position: relative;
+    .disable-text-selection;
+
+    &:before, strong {
+      font-size: 80%;
+      font-variant: small-caps;
+      color: @color;
+      text-shadow: 0 1px 0 lighten(@pane-background, 3%);
+      text-transform: uppercase;
+    }
+    .twizzle;
+
+    &:hover {
+      background: darken(@pane-background, 6%);
+    }
+    s {
+      flex: 0 0 auto;
+    }
+    strong {
+      display: block;          
+      flex: 0 1 auto;
+      text-overflow: ellipsis;
+      overflow: hidden;      
+      white-space: nowrap;
+      padding-right: 3em;
+    }
+    .badge {
+      flex: 0 0 auto;
+    }
+  }
+
+  &.disabled > h1:before,
+  &.disabled .collapsible-header:before {
+    display: none;
+  }
+  &.disabled > h1,
+  &.disabled .collapsible-header {
+    cursor: default;
+  }
+}

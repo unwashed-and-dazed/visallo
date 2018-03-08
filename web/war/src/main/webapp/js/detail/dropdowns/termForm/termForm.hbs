@@ -1,0 +1,23 @@
+<div class="{{ classNames }}">
+    <div class="errors"></div>
+    <input type="text" style="display:none" class="graphVertexId" value="{{ graphVertexId }}">
+
+    {{#if unresolve}}
+        <div class="unresolve-note">{{ i18n 'detail.resolve.form.unresolve.note' }}</div>
+    {{else}}
+        <div class="vertex-container"></div>
+
+        <div class="help">{{ i18n 'detail.resolve.form.entity_search.help' }}</div>
+
+        <div class="concept-container"></div>
+
+        <div class="justification"></div>
+
+        <div class="visibility"></div>
+    {{/if}}
+
+    <div class="buttons">
+        <button class="btn btn-link btn-small cancel">{{ i18n 'detail.resolve.form.button.cancel' }}</button>
+        <button style="display:none" class="btn btn-small btn-primary">{{ buttonText }}</button>
+    </div>
+</div>

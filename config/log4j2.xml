@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" [
+    <!ENTITY logDir "/opt/visallo/logs">
+
+    <!-- Pattern: %d{yyyy-MM-dd HH:mm:ss.SSS/zzz} %-5p [%X{userId}:%X{userName}] [%c{3}] %m%n -->
+    <!ENTITY pattern "&#37;d{yyyy-MM-dd HH:mm:ss.SSS/zzz} &#37;-5p [&#37;X{userId}:&#37;X{userName}] [&#37;c{3}] &#37;m&#37;n">
+]
+>
+
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="&pattern;"/>
+            <!-- <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/> -->
+        </Console>
+        <!-- https://logging.apache.org/log4j/2.0/manual/appenders.html#RollingFileAppender -->
+        <!--
+        <RollingFile name="log" fileName="&logDir;/visallo${sys:logFileSuffix}.log"
+                                filePattern="&logDir;/visallo${sys:logFileSuffix}-%i.log"
+                                immediateFlush="true">
+            <PatternLayout pattern="&pattern;"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="32 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="2"/>
+        </RollingFile>
+        -->
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.catalina.webresources.Cache" level="error" />
+        <Logger name="org.apache.tomcat.util.scan.StandardJarScanner" level="error" />
+        <Logger name="org.semanticweb.owlapi.util.SAXParsers" level="error" />
+        <Logger name="com.v5analytics" level="debug" />
+        <Logger name="org.vertexium" level="debug" />
+        <Logger name="org.visallo" level="debug" />
+        <Logger name="com.visallo" level="debug" />
+        <!--
+        <Logger name="org.vertexium.query.Query.QUERY" level="trace" />
+        <Logger name="org.vertexium.Graph.QUERY" level="trace" />
+        -->
+        <Root level="warn">
+            <AppenderRef ref="console"/>
+            <!-- <AppenderRef ref="log" /> -->
+        </Root>
+    </Loggers>
+</Configuration>

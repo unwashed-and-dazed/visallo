@@ -1,0 +1,26 @@
+@import (reference) "../constants";
+
+.org-visallo-element {
+  font-weight: bold;
+  cursor: move;
+  border-bottom: 1px solid black;
+  text-decoration: none;
+  color: inherit;
+  word-break: break-word;
+  &:focus, &:hover {
+    color: inherit;
+    border-bottom-width: 2px;
+    text-decoration: none;
+  }
+  .rel-label {
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 90%;
+  }
+}
+.org-visallo-element-loading {
+    font-style: italic;
+    color: @light-color;
+    font-weight: normal;
+}
+

@@ -1,0 +1,63 @@
+
+.nav-list {
+
+  li {
+
+    .nav-list-subtitle {
+        display: block;
+        font-size: 80%;
+        color: darken(@pane-background, 30%);
+        line-height: 1.3em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &.active .nav-list-subtitle {
+        color: fadeout(white, 30%);      
+    }
+
+    .nav-list-title {
+        word-break: break-word;
+        white-space: normal;
+        display: block;
+    }
+
+    &.nav-header {
+      .badge {
+        float: right;
+      }
+      
+      &.has-badge {
+        .nav-list-title {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-right: 1em;
+        }
+      }
+    }
+
+    &.loading {
+      position: relative;
+      a {
+        padding-right: 2.5em;
+      }
+      &:after {
+        content: '';
+        background-image: url(../img/loading.gif);
+        background-size: contain;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+      &.active:after {
+        background-image: url(../img/loading-active.gif);
+      }
+    }
+
+  }
+}

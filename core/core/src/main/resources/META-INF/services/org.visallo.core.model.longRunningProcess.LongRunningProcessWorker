@@ -1,0 +1,4 @@
+org.visallo.core.ingest.cloud.CloudImportLongRunningProcessWorker
+org.visallo.core.model.longRunningProcess.FindPathLongRunningProcessWorker
+org.visallo.core.model.longRunningProcess.ReindexLongRunningProcessWorker
+org.visallo.core.ping.PingLongRunningProcess

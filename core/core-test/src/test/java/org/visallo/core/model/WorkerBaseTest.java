@@ -1,0 +1,105 @@
+package org.visallo.core.model;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.visallo.core.config.Configuration;
+import org.visallo.core.exception.VisalloException;
+import org.visallo.core.ingest.WorkerSpout;
+import org.visallo.core.ingest.graphProperty.WorkerItem;
+import org.visallo.core.model.workQueue.WorkQueueRepository;
+import org.visallo.core.status.JmxMetricsManager;
+import org.visallo.core.util.VisalloLogger;
+
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.fail;
+import static org.mockito.Matchers.anyBoolean;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
+public class WorkerBaseTest {
+    private boolean stopOnNextTupleException;
+    private int nextTupleExceptionCount;
+
+    @Mock
+    private WorkQueueRepository workQueueRepository;
+    @Mock
+    private Configuration configuration;
+    @Mock
+    private WorkerSpout workerSpout;
+
+    @Before
+    public void before() {
+        nextTupleExceptionCount = 0;
+    }
+
+    @Test
+    public void testExitOnNextTupleFailure_exitOnNextTupleFailure_true() throws Exception {
+        stopOnNextTupleException = false;
+        when(configuration.getBoolean(eq(TestWorker.class.getName() + ".exitOnNextTupleFailure"), anyBoolean())).thenReturn(true);
+        when(workQueueRepository.createWorkerSpout(eq("test"))).thenReturn(workerSpout);
+        when(workerSpout.nextTuple()).thenThrow(new VisalloException("could not get nextTuple"));
+
+        TestWorker testWorker = new TestWorker(workQueueRepository, configuration);
+        try {
+            testWorker.run();
+            fail("should throw");
+        } catch (VisalloException ex) {
+            assertEquals(1, nextTupleExceptionCount);
+        }
+    }
+
+    @Test
+    public void testExitOnNextTupleFailure_exitOnNextTupleFailure_false() throws Exception {
+        stopOnNextTupleException = true;
+        when(configuration.getBoolean(eq(TestWorker.class.getName() + ".exitOnNextTupleFailure"), anyBoolean())).thenReturn(false);
+        when(workQueueRepository.createWorkerSpout(eq("test"))).thenReturn(workerSpout);
+        when(workerSpout.nextTuple()).thenThrow(new VisalloException("could not get nextTuple"));
+
+        TestWorker testWorker = new TestWorker(workQueueRepository, configuration);
+        testWorker.run();
+        assertEquals(1, nextTupleExceptionCount);
+    }
+
+    private class TestWorker extends WorkerBase<TestWorkerItem> {
+        protected TestWorker(WorkQueueRepository workQueueRepository, Configuration configuration) {
+            super(workQueueRepository, configuration, new JmxMetricsManager());
+        }
+
+        @Override
+        public TestWorkerItem tupleDataToWorkerItem(byte[] data) {
+            return new TestWorkerItem(data);
+        }
+
+        @Override
+        protected void process(TestWorkerItem workerItem) throws Exception {
+            stop();
+        }
+
+        @Override
+        protected String getQueueName() {
+            return "test";
+        }
+
+        @Override
+        protected void handleNextTupleException(VisalloLogger logger, Exception ex) throws InterruptedException {
+            nextTupleExceptionCount++;
+            if (stopOnNextTupleException) {
+                stop();
+                return;
+            }
+            super.handleNextTupleException(logger, ex);
+        }
+    }
+
+    private class TestWorkerItem extends WorkerItem {
+        private final byte[] data;
+
+        public TestWorkerItem(byte[] data) {
+            this.data = data;
+        }
+    }
+}

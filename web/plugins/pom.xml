@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.visallo</groupId>
+        <artifactId>visallo-web-group</artifactId>
+        <version>4.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <artifactId>visallo-web-plugins-group</artifactId>
+    <name>Visallo: Web: Plugins</name>
+
+    <modules>
+        <module>admin-user-property-auth</module>
+        <module>admin-user-property-privileges</module>
+        <module>admin-user-tools</module>
+        <module>auth-username-only</module>
+        <module>auth-username-password</module>
+        <module>change-email</module>
+        <module>change-password</module>
+        <module>ingest-cloud-s3</module>
+        <module>graph-product</module>
+        <module>map-product</module>
+        <module>structured-ingest</module>
+        <module>table</module>
+    </modules>
+</project>

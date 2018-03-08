@@ -1,0 +1,2 @@
+org.visallo.core.ingest.MetadataGraphPropertyWorker
+org.visallo.core.ping.PingGraphPropertyWorker

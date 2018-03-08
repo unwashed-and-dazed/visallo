@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+language: java
+env:
+  - BUILD_PROJECT=1 DOCKER_IMAGE="visallo/travis:visallo-4.1-SNAPSHOT"
+  - BUILD_DOCS=1 VERSION_LIST="release-3.1 release-4.0 master" VERSION_ROOT="release-4.0" DOCKER_IMAGE="visallo/travis:visallo-4.1-SNAPSHOT"
+before_install:
+  - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
+  - docker pull ${DOCKER_IMAGE}
+install: /bin/true
+script: ./travis/script.sh
+after_success: ./travis/after-success.sh
+branches:
+  only:
+    - master
+    - /^release-.*$/
+cache:
+  directories:
+    - ${HOME}/.npm
+    - ${HOME}/.m2/repository

@@ -1,0 +1,148 @@
+@import (reference) "../util/constants";
+
+background: #efefef;
+position: absolute;
+height: 20em;
+width: 25em;  
+
+.content {
+  position: relative;
+  display: block;
+  max-width: none;  
+  box-sizing: border-box;
+  white-space: normal;
+  overflow: auto;
+  
+  h1.no-activity {
+    position: absolute;
+    top: 50%;
+    left: 0;    
+    margin: -1em 0 0 0;
+    padding: 0;    
+    width: 100%;
+    text-align: center;
+    font-size: 140%;
+    color: darken(white, 15%);
+  }
+
+  section {    
+    & > h1 {
+      line-height: 1em;
+      margin: 0;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: flex;
+        margin: 0;
+        padding: 0.5em 1em;
+        border-bottom: 1px solid darken(white, 10%);
+        position: relative;
+        overflow: auto;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .process {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+
+          .type-container {
+            flex: 1 0 auto;
+            font-weight: bold;
+            color: #555;
+            word-break: break-all;
+          }
+
+          .progress-container {
+
+            button {
+              float: right;
+              margin-left: 0.5em;
+              border: 0;
+              display: inline-block;
+              width: 1.3em;
+              height: 1.3em;
+              border-radius: 50%;
+              margin-top: -0.8ex;
+              background: url(../img/glyphicons/glyphicons_192_circle_remove@2x.png) no-repeat;
+              background-size: contain;
+              background-position: center;
+              .opacity(30);
+            }
+
+            &.no-cancel button {
+              display: none;
+            }
+
+            .progress {
+              border-radius: 0.5ex;
+              height: 1ex;
+              margin: 0;
+              background: darken(white, 5%);
+              &.determinate {
+                .bar {
+                  background: lighten(@blue-color, 5%);
+                }
+              }
+            }
+
+            .loading + .progress {
+              margin-right: 45px;
+            }
+          }
+
+          .progress-description {
+            flex: 0 1 100%;
+            line-height: 1em;
+            min-height: 1em;
+            color: #777;
+            font-size: 90%;
+          }
+        }
+
+        .actions-container {
+          display: none;
+          margin: 0 0 0 0.5em;
+
+          .actions-plugin {
+            .btn.btn-mini {
+              white-space: nowrap;
+            }
+          }
+
+          button {
+            width: 100%;
+            margin: 0.5em 0;
+            display: block;
+          }
+        }
+
+        &.finished {
+          .actions-container {
+            display: block;
+            flex: 0 0 auto;
+            align-self: right;
+          }
+          .process {
+            .progress-container {
+              display: none;
+            }
+          }
+        }
+
+        & > * {
+          margin: 0.35em 0;
+        }
+      }
+    }
+  }
+}

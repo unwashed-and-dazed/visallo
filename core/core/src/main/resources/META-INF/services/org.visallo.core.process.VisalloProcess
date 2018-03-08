@@ -1,0 +1,4 @@
+org.visallo.core.process.ExternalResourceRunnerProcess
+org.visallo.core.process.GraphPropertyRunnerProcess
+org.visallo.core.process.LongRunningProcessRunnerProcess
+org.visallo.core.process.SystemNotificationProcess

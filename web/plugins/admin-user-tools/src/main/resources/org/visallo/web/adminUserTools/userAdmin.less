@@ -1,0 +1,75 @@
+
+.user-admin .nav-header {
+  padding-left: 0;
+}
+
+.user-admin ul {
+  list-style: none;
+  margin-left: 8px;
+}
+
+.user-admin ul li label.nav-header {
+  display: inline;
+  margin-right: -10px;
+}
+
+.user-admin .alert.alert-error button.close {
+  display: inline;
+  width: auto;
+  margin: 0;
+}
+
+.active-user-list {
+  h1.collapsible-header {
+    display: flex;
+    align-items: center;
+
+    strong {
+      padding-right: 5px;
+    }
+
+    &:hover .refresh {
+      visibility: visible;
+    }
+
+    .refresh {
+      display: inline-block;
+      visibility: hidden;
+      opacity: 0.4;
+      width: 10px;
+      height: 10px;
+      background-image: url(../../../../../img/glyphicons/glyphicons_081_refresh@2x.png);
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+
+    .refresh:hover {
+      opacity: 0.6;
+    }
+
+    .badge {
+      margin-top: 0;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      .nav-header {
+        margin: 0;
+        padding: 0;
+        cursor: default;
+        span {
+          text-transform: none;
+          margin-left: 0.5em;
+          color: #333;
+          font-weight: normal;
+          font-size: 120%;
+        }
+      }
+      list-style: none;
+    }
+  }
+}

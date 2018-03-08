@@ -1,0 +1,185 @@
+.product-toolbar {
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: @graph-zIndex;
+
+  @padding: 10px;
+  @bg: #eee;
+  @active-bg: #ddd;
+  @hover-bg: #e5e5e5;
+  @border-color: #bbb;
+
+  .toolbar-list {
+    display: flex;
+    background: @bg;
+    .box-shadow(0 0 2px rgba(0,0,0,0.3));
+
+    .extensions {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding-right: 0.5em;
+      border-right: 1px solid @active-bg;
+
+      .toolbar-item {
+        padding: 2px 0.2em;
+        border: 1px solid transparent;
+
+        &:hover {
+          background: @hover-bg;
+        }
+        &.active {
+          background-color: @active-bg;
+          .arrow {
+            display: block;
+          }
+        }
+
+        .button {
+          .item-icon {
+            width: 20px;
+            height: 23px;
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+
+          span {
+            padding-top: 0.1em;
+          }
+
+          &.zoom {
+            padding: 0 0.5em;
+
+            span {
+              font-weight: bold;
+              font-size: 1.2em;
+              padding: 0;
+            }
+          }
+
+          &.has-popover:after {
+            content: '▾';
+            padding-left: 0.3em;
+            font-size: 70%;
+          }
+        }
+      }
+    }
+
+    .toolbar-menu {
+      padding: 0 0.25em;
+      border: 1px solid transparent;
+
+      &.active {
+        background-color: @active-bg;
+      }
+
+      &:hover {
+        background-color: @hover-bg;
+      }
+
+      &:after {
+        content: '▾';
+        font-size: 70%;
+        vertical-align: middle;
+      }
+
+      button {
+        margin: 0;
+        background-color: transparent;
+        background-image: url(../img/glyphicons/glyphicons_157_show_lines@2x.png);
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-size: 0;
+        width: 23px;
+        height: 100%;
+        border: 1px solid transparent;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .item-container {
+        white-space: nowrap;
+        right: @padding / 2;
+
+        input {
+          vertical-align: middle;
+          margin: 0 0.25em;
+        }
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            padding: 0.3em 0.5em;
+            margin: 0;
+            label {
+              font-size: inherit;
+              margin: 0;
+            }
+            .group label {
+              display: inline;
+              input {
+                margin-left: 0.5em;
+                margin-right: 0.1em;
+              }
+            }
+            .subtitle {
+              font-style: italic;
+              color: #ccc;
+            }
+          }
+        }
+      }
+    }
+
+    .item-container {
+      position: absolute;
+      top: 30px;
+      padding: 0.5em;
+      padding-bottom: 0.1em;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      border-radius: 0 0 6px 6px;
+      padding: 0.5em;
+      font-size: 85%;
+      background-color: white;
+    }
+
+    .button {
+      position: relative;
+      display: flex;
+      height: 23px;
+      max-width: 10em;
+      padding: 0 0.25em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-radius: 2px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .arrow {
+      display: none;
+      position: absolute;
+      top: 20px;
+      height: 0;
+      width: 0;
+      border: 5px solid transparent;
+      border-bottom-color: white;
+    }
+  }
+
+  .toolbar-item, button {
+    transition: background-color ease-in-out 0.1s;
+  }
+}

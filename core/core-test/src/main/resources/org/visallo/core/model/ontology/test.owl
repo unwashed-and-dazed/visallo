@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://visallo.org/test#"
+     xml:base="http://visallo.org/test"
+     xmlns:visallo="http://visallo.org#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://visallo.org#addable -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#addable"/>
+    
+
+
+    <!-- http://visallo.org#color -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#color"/>
+    
+
+
+    <!-- http://visallo.org#deleteable -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#deleteable"/>
+    
+
+
+    <!-- http://visallo.org#dependentPropertyIris -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#dependentPropertyIris"/>
+    
+
+
+    <!-- http://visallo.org#displayFormula -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#displayFormula"/>
+    
+
+
+    <!-- http://visallo.org#displayType -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#displayType"/>
+    
+
+
+    <!-- http://visallo.org#extendedDataTableDomain -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#extendedDataTableDomain"/>
+    
+
+
+    <!-- http://visallo.org#glyphIconFileName -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#glyphIconFileName"/>
+    
+
+
+    <!-- http://visallo.org#intent -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#intent"/>
+    
+
+
+    <!-- http://visallo.org#objectPropertyDomain -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#objectPropertyDomain"/>
+    
+
+
+    <!-- http://visallo.org#possibleValues -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#possibleValues"/>
+    
+
+
+    <!-- http://visallo.org#propertyGroup -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#propertyGroup"/>
+    
+
+
+    <!-- http://visallo.org#textIndexHints -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#textIndexHints"/>
+    
+
+
+    <!-- http://visallo.org#timeFormula -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#timeFormula"/>
+    
+
+
+    <!-- http://visallo.org#titleFormula -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#titleFormula"/>
+    
+
+
+    <!-- http://visallo.org#updateable -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#updateable"/>
+    
+
+
+    <!-- http://visallo.org#validationFormula -->
+
+    <owl:AnnotationProperty rdf:about="http://visallo.org#validationFormula"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://visallo.org#extendedDataTable -->
+
+    <rdfs:Datatype rdf:about="http://visallo.org#extendedDataTable"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://visallo.org/test#personIsRelatedToPerson -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/test#personIsRelatedToPerson">
+        <rdfs:domain rdf:resource="http://visallo.org/test#person"/>
+        <rdfs:range rdf:resource="http://visallo.org/test#person"/>
+        <visallo:intent>test</visallo:intent>
+        <rdfs:label xml:lang="en">Is Related To</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://visallo.org/test#personIsSisterOfPerson -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/test#personIsSisterOfPerson">
+        <rdfs:subPropertyOf rdf:resource="http://visallo.org/test#personIsRelatedToPerson"/>
+        <rdfs:domain rdf:resource="http://visallo.org/test#person"/>
+        <rdfs:range rdf:resource="http://visallo.org/test#person"/>
+        <rdfs:label xml:lang="en">Is Sister Of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://visallo.org/test#personKnowsPerson -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/test#personKnowsPerson">
+        <rdfs:domain rdf:resource="http://visallo.org/test#person"/>
+        <rdfs:range rdf:resource="http://visallo.org/test#person"/>
+        <visallo:timeFormula>prop(&apos;http://visallo.org/test#firstMet&apos;) || &apos;&apos;</visallo:timeFormula>
+        <rdfs:label xml:lang="en">Knows</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://visallo.org/test#favoriteColor -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/test#favoriteColor">
+        <rdfs:domain rdf:resource="http://visallo.org/test#person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <visallo:possibleValues xml:lang="en">
+            {
+            &quot;Red&quot;: &quot;red 1&quot;,
+            &quot;Blue&quot;: &quot;blue 2&quot;
+            }
+        </visallo:possibleValues>
+        <visallo:textIndexHints>EXACT_MATCH</visallo:textIndexHints>
+        <rdfs:label xml:lang="en">Favorite Color</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://visallo.org/test#firstMet -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/test#firstMet">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <visallo:objectPropertyDomain rdf:resource="http://visallo.org/test#personKnowsPerson"/>
+        <rdfs:label xml:lang="en">First Met</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://visallo.org/test#name -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/test#name">
+        <rdfs:domain rdf:resource="http://visallo.org/test#person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <visallo:addable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</visallo:addable>
+        <visallo:deleteable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</visallo:deleteable>
+        <visallo:dependentPropertyIris>[
+            &quot;http://visallo.org/test#firstName&quot;,
+            &quot;http://visallo.org/test#middleName&quot;,
+            &quot;http://visallo.org/test#lastName&quot;
+            ]
+        </visallo:dependentPropertyIris>
+        <visallo:displayFormula>
+            _.compact([
+            dependentProp(&apos;http://visallo.org/test#firstName&apos;),
+            dependentProp(&apos;http://visallo.org/test#middleName&apos;),
+            dependentProp(&apos;http://visallo.org/test#lastName&apos;)
+            ]).join(&apos;, &apos;)
+        </visallo:displayFormula>
+        <visallo:displayType xml:lang="en">test</visallo:displayType>
+        <visallo:intent>test3</visallo:intent>
+        <visallo:possibleValues xml:lang="en">
+            {
+            &quot;T1&quot;: &quot;test 1&quot;,
+            &quot;T2&quot;: &quot;test 2&quot;
+            }
+        </visallo:possibleValues>
+        <visallo:propertyGroup xml:lang="en">Personal Information</visallo:propertyGroup>
+        <visallo:textIndexHints>FULL_TEXT,EXACT_MATCH</visallo:textIndexHints>
+        <visallo:updateable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</visallo:updateable>
+        <visallo:validationFormula>dependentProp(&apos;http://visallo.org/test#lastName&apos;) &amp;&amp; dependentProp(&apos;http://visallo.org/test#firstName&apos;)</visallo:validationFormula>
+        <rdfs:label xml:lang="en">Name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://visallo.org/test#personExtendedDataTable -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/test#personExtendedDataTable">
+        <rdfs:domain rdf:resource="http://visallo.org/test#person"/>
+        <rdfs:range rdf:resource="http://visallo.org#extendedDataTable"/>
+        <rdfs:label xml:lang="en">Person Table</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://visallo.org/test#personExtendedDataTableColumn1 -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/test#personExtendedDataTableColumn1">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <visallo:extendedDataTableDomain>http://visallo.org/test#personExtendedDataTable</visallo:extendedDataTableDomain>
+        <visallo:textIndexHints>EXACT_MATCH</visallo:textIndexHints>
+        <rdfs:label xml:lang="en">Person Table Column 1</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://visallo.org/test#personExtendedDataTableColumn2 -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/test#personExtendedDataTableColumn2">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <visallo:extendedDataTableDomain>http://visallo.org/test#personExtendedDataTable</visallo:extendedDataTableDomain>
+        <visallo:textIndexHints>EXACT_MATCH</visallo:textIndexHints>
+        <rdfs:label xml:lang="en">Person Table Column 2</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://visallo.org#extendedDataTable -->
+
+    <owl:Class rdf:about="http://visallo.org#extendedDataTable"/>
+    
+
+
+    <!-- http://visallo.org/test#contact -->
+
+    <owl:Class rdf:about="http://visallo.org/test#contact">
+        <visallo:color xml:lang="en">rgb(149, 138, 218)</visallo:color>
+        <visallo:displayType xml:lang="en">test</visallo:displayType>
+        <visallo:intent>face</visallo:intent>
+        <rdfs:label xml:lang="en">Contact</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://visallo.org/test#person -->
+
+    <owl:Class rdf:about="http://visallo.org/test#person">
+        <rdfs:subClassOf rdf:resource="http://visallo.org/test#contact"/>
+        <visallo:color xml:lang="en">rgb(28, 137, 28)</visallo:color>
+        <visallo:glyphIconFileName xml:lang="en">glyphicons_003_user@2x.png</visallo:glyphIconFileName>
+        <visallo:intent>person</visallo:intent>
+        <visallo:timeFormula>prop(&apos;http://visallo.org/test#birthDate&apos;) || &apos;&apos;</visallo:timeFormula>
+        <visallo:titleFormula>prop(&apos;http://visallo.org/test#name&apos;) || &apos;&apos;</visallo:titleFormula>
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

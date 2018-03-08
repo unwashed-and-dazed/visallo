@@ -1,0 +1,71 @@
+.number-range-wrapper {
+  .number-range-input {
+    width: 100%;
+  }
+
+  .tooltip {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    pointer-events: none;
+  }
+
+  &:hover {
+    .tooltip {
+      opacity: 1;
+    }
+  }
+
+  .number-range-input {
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &.empty {
+    /** THUMB **/
+    .number-range-input[type=range]::-moz-range-thumb {
+      background-color: transparent;
+      border-width: 0px;
+    }
+    .number-range-input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+    .number-range-input[type=range]::-ms-thumb {
+      display: none;
+    }
+
+    &:hover {
+      .tooltip {
+        opacity: 0;
+      }
+    }
+  }
+
+  /** THUMB **/
+  .number-range-input[type=range]::-moz-range-thumb {
+    background-color: white;
+    border-width: 1px;
+  }
+  .number-range-input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: slider-horizontal;
+  }
+  .number-range-input[type=range]::-ms-thumb {
+    display: initial;
+    background: #aaa;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    border-color: transparent;
+  }
+  .number-range-input[type=range]::-ms-track {
+    border-radius: 3px;
+    cursor: pointer;
+    border: 0px;
+    color: transparent;
+  }
+  .number-range-input[type=range]::-ms-fill-upper,
+  .number-range-input[type=range]::-ms-fill-lower {
+    border: 0px;
+    background: transparent;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "opts": {
+    "destination": "./build/jsdoc/",
+    "recurse": true,
+    "readme": "./README.md",
+    "template": "./node_modules/@visallo/visallo-jsdoc-template"
+  },
+  "recurseDepth": 100,
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "source": {
+    "include": [ "js/", "../../../../plugins" ],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_|dist|node_modules|target"
+  },
+  "plugins": [
+    "plugins/markdown",
+    "./node_modules/@visallo/visallo-jsdoc-template/plugins/visallo"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": false
+  }
+}

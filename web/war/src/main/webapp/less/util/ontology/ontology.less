@@ -1,0 +1,23 @@
+.ontology-form {
+  select {
+    width: 100%;
+  }
+
+  .base-select-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    button.btn {
+      white-space: nowrap;
+      width: auto;
+      margin-bottom: 1em;
+      &:first-child {
+        flex: 0 0 auto;
+      }
+      &:last-child {
+        flex: 0 1 auto;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+}

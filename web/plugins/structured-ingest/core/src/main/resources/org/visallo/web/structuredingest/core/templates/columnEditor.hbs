@@ -1,0 +1,25 @@
+<span class="mapping-buttons">
+  <button class="btn btn-link btn-small cancel-mapping">{{ i18n 'csv.file_import.mapping.cancel' }}</button>
+  <button class="btn btn-primary btn-small add-mapping" disabled>{{ i18n 'csv.file_import.mapping.save' }}</button>
+</span>
+{{ i18n 'csv.file_import.mapping.column' }} <code>{{ key }}</code> {{ i18n 'csv.file_import.mapping.column.to' }}
+<select class="entity">
+  <option value="">{{ i18n 'csv.file_import.entities.new' }}</option>
+  {{#each vertices }}
+
+  <option value="{{ id }}" {{#if @last}}selected{{/if}}>{{ displayName }}</option>
+  {{/each}}
+</select>
+
+<div class="form-row">
+  <div class="concept"></div>
+  <div class="entity-visibility"></div>
+</div>
+<div class="form-row">
+  <div class="field"></div>
+  <div class="field-visibility"></div>
+</div>
+<div class="field-error"></div>
+<div class="aux_fields"></div>
+<label class="identifier"><input type="checkbox" name="isIdentifier" style="margin:0" /> {{ i18n 'csv.file_import.mapping.import.entity.unique.column.identifier' }}</label>
+

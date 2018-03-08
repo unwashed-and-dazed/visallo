@@ -1,0 +1,52 @@
+
+// Hide panes
+
+#app > div,
+.org-visallo-toolbar {
+    display: none;
+}
+
+// Show only Dashboard, Product, and Fullscreen
+#app > div.dashboard-pane.visible,
+#app > div.detail-pane.visible,
+#app > div.entities-container,
+#app > div.products-full-pane.visible {
+    display: block;
+    height: auto;
+    overflow: visible;
+}
+
+// Stack Element Inspector after dashboard/product
+
+#app {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    > div {
+        flex: 1 1 100%;
+        position: relative;
+    }
+    > div.dashboard-pane { order: 1; }
+    > div.products-full-pane { order: 2; }
+    > div.detail-pane { order: 3; }
+}
+
+
+// Dashboard Fixes
+
+#app, body, .grid-scroller {
+    overflow: visible !important;
+}
+
+
+// Fullscreen Fixes
+
+#app > div.entities-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    > .detail-pane {
+        flex: 1 1 100%;
+    }
+}
+

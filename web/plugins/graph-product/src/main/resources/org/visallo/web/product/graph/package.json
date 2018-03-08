@@ -1,0 +1,76 @@
+{
+  "name": "visallo-web-product-graph",
+  "description": "",
+  "main": "plugin.js",
+  "author": "Visallo, LLC",
+  "repository": "visallo/visallo",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "@visallo/cytoscape": "3.2.4",
+    "cytoscape-dagre": "^2.1.0"
+  },
+  "scripts": {
+    "test": "node ./node_modules/jest/bin/jest.js"
+  },
+  "devDependencies": {
+    "@visallo/updeep": "^1.0.1",
+    "babel-core": "^6.21.0",
+    "babel-jest": "^18.0.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-amd-to-commonjs": "^0.2.0",
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+    "babel-plugin-transform-react-display-name": "^6.8.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "bluebird": "^3.5.0",
+    "color-js": "1.0.3",
+    "create-react-class": "^15.6.2",
+    "ejs-compiled-loader": "^2.2.0",
+    "eslint": "^4.6.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.3.0",
+    "fast-json-patch": "1.0.0",
+    "jest": "^18.1.0",
+    "prop-types": "^15.6.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-test-renderer": "16.2.0",
+    "redux": "^3.6.0",
+    "redux-mock-store": "^1.2.2",
+    "redux-thunk": "^2.2.0",
+    "underscore": "1.8.3",
+    "webpack": "^3.5.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/__mocks__/_setup.js"
+    ],
+    "moduleNameMapper": {
+      "product/toolbar/ProductToolbar": "<rootDir>/__mocks__/product/toolbar/ProductToolbar.jsx",
+      "components/RegistryInjectorHOC": "<rootDir>/__mocks__/components/RegistryInjectorHOC.jsx",
+      "components/Attacher": "<rootDir>/__mocks__/components/Attacher.jsx",
+      "popovers/index": "<rootDir>/__mocks__/popovers.js",
+      "data/web-worker/store/actions": "<rootDir>/__mocks__/data/web-worker/store/actions.js",
+      "data/web-worker/store/element/actions-impl": "<rootDir>/__mocks__/data/web-worker/store/element/actions-impl.js",
+      "data/web-worker/store/element/selectors": "<rootDir>/__mocks__/data/web-worker/store/element/selectors.js",
+      "data/web-worker/store/product/actions-impl": "<rootDir>/__mocks__/data/web-worker/store/product/actions-impl.js",
+      "data/web-worker/store/product/selectors": "<rootDir>/__mocks__/data/web-worker/store/product/selectors.js",
+      "data/web-worker/store/selection/actions-impl": "<rootDir>/__mocks__/data/web-worker/store/selection/actions-impl.js",
+      "data/web-worker/store/workspace/actions-impl": "<rootDir>/__mocks__/data/web-worker/store/workspace/actions-impl.js",
+      "data/web-worker/store/user/actions-impl": "<rootDir>/__mocks__/data/web-worker/store/user/actions-impl.js",
+      "data/web-worker/util/ajax": "<rootDir>/__mocks__/data/web-worker/util/ajax.js",
+      "util/retina": "<rootDir>/__mocks__/util/retina.js",
+      "util/vertex/formatters": "<rootDir>/__mocks__/util/vertexFormatters.js",
+      "util/withContextMenu": "<rootDir>/__mocks__/util/withContextMenu.js",
+      "util/deepObjectCache": "<rootDir>/__mocks__/util/deepObjectCache.js",
+      "util/formatters": "<rootDir>/__mocks__/util/formatters.js",
+      "colorjs": "<rootDir>/node_modules/color-js/color.js",
+      "fast-json-patch": "<rootDir>/node_modules/fast-json-patch/dist/json-patch-duplex.min.js",
+      "underscore": "<rootDir>/node_modules/underscore/underscore-min.js",
+      "updeep": "@visallo/updeep"
+    }
+  }
+}

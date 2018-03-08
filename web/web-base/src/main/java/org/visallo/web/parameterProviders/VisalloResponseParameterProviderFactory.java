@@ -1,0 +1,30 @@
+package org.visallo.web.parameterProviders;
+
+import org.visallo.webster.HandlerChain;
+import org.visallo.webster.parameterProviders.ParameterProvider;
+import org.visallo.webster.parameterProviders.ParameterProviderFactory;
+import org.visallo.web.VisalloResponse;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+
+public class VisalloResponseParameterProviderFactory extends ParameterProviderFactory<VisalloResponse> {
+    private static final ParameterProvider<VisalloResponse> PARAMETER_PROVIDER = new ParameterProvider<VisalloResponse>() {
+        @Override
+        public VisalloResponse getParameter(HttpServletRequest request, HttpServletResponse response, HandlerChain chain) {
+            return new VisalloResponse(request, response);
+        }
+    };
+
+    @Override
+    public boolean isHandled(Method handleMethod, Class<? extends VisalloResponse> parameterType, Annotation[] parameterAnnotations) {
+        return VisalloResponse.class.isAssignableFrom(parameterType);
+    }
+
+    @Override
+    public ParameterProvider<VisalloResponse> createParameterProvider(Method handleMethod, Class<?> parameterType, Annotation[] parameterAnnotations) {
+        return PARAMETER_PROVIDER;
+    }
+}
